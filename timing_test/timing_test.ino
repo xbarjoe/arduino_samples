@@ -148,6 +148,16 @@ void random_strobe(int bpm, double division, double len){
   
 }
 
+//Virtually identical to random_strobe, but uses 2 LEDs rather than one.
+
+//TODO: REFACTOR TO replace 'random_strobe()' and 'random_twostrobe()' with a single function 'random_nstrobe()'
+//Randomly activates 2 LEDs according to a given BPM, Note Length, & note duration (Accurate down to the microsecond!).
+//Due to potential sync issues, this does go out of sync for after a certain length of time.
+//Rough calculations estimate after 4 minutes, the effect is out of sync by about 6 milliseconds.
+//Not too shabby if I do say so myself.
+//BPM: Integer       | Beats per minute of random strobe
+//DIVISION: Double   | Note length (8 = 8th note, 4 = 4th note, etc) 
+//LEN: Double        | Percentage of note length where led is HIGH (Reccomended to be below .5 for strobe effects)
 void random_Twostrobe(int bpm, double division, double len){
   if(len > 1 || len < 0){
     Serial.print("ERROR: INVALID STROBE LENGTH");
